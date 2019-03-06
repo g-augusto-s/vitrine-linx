@@ -1,0 +1,26 @@
+.produto {
+    color: black;
+}
+
+.produto .promocao {
+    color: red;
+}
+
+
+
+.produto a:link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.produto a:visited {
+    text-decoration: none;
+}
+
+.produto a:hover {
+    text-decoration: underline;
+}
+
+.produto a:active {
+    text-decoration: underline;
+}
