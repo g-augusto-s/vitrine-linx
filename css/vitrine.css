@@ -1,8 +1,17 @@
 .produto {
+    display: inline-block;
     color: black;
 }
 
+.produto img{
+    display: block;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .produto .promocao {
+    display: inline-block;
     color: red;
 }
 
