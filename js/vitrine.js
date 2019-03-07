@@ -1,31 +1,39 @@
-var vitrine = {
+const X = response => {
 
-    getData: function (url) {
-        fetch(url, {
-            method: 'GET',
-            headers: {'Content-Type': 'application/json'},
-        }).then(function(response) {
-            console.log("response: ", response)
-            if(response.ok) {
-                response.json().then(function(data){
-                    console.log("Data: ", data);
-                    console.log("Data typeof: ", typeof data);
-                });
-            } else {
-              console.log('Network response was not ok.');
+    this.widget = null;
+    this.reference = null;
+    this.recommendation = null;
+
+    for (const key in response.data) {
+        if (response.data.hasOwnProperty(key)) {
+            const obj = response.data[key];
+            switch(key){
+                case "widget":
+                    this.widget = obj;
+                    break;
+                
+                case "reference":
+                    this.reference = obj;
+                    break;
+                
+                case "recommendation":
+                    this.recommendation = obj;
+                    break;
+
+                default:
+                    console.log("Erro");
+                    break;
+                
             }
-        })
-        .catch(function(error) {
-            console.log('There has been a problem with your fetch operation: ' + error.message);
-        });
-    },
-    
-    init: function () {
-        vitrine.getData("http://roberval.chaordicsystems.com/challenge/challenge.json?callback=X");
-
+        }
     }
+    console.log("variaveis de estado: ");
+    console.log("this.widget: ", this.widget);
+    console.log("this.reference: ", this.reference);
+    console.log("this.recommendation: ", this.recommendation);
 
-    
+    this.recommendation.map(recomendations => {
+        // console.log("recomendations: ", recomendations);
+    });
+
 }
-
-vitrine.init();
