@@ -130,7 +130,7 @@ const X = response => {
         changePage(1);
     };
 
-    // Main program
+    // Main
     this.getData();
     this.renderProduct(reference);
     
