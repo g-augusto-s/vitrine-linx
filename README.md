@@ -9,7 +9,9 @@ Código criado por mim para o processo seletivo
 ```
 git clone https://github.com/g-augusto-s/vitrine-linx.git
 ```
-E abrir o arquivo index.html com seu navegador favorito.
+E abrir o arquivo index.html no seu navegador favorito.
+
+OBS: Os navegadores bloqueiam a requisição http, porém no firefox da pra ignorar a proteção e ver o resultado mesmo assim.
 
 ## Autor
 
