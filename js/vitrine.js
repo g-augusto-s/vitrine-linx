@@ -52,7 +52,7 @@ const X = response => {
                     </div>
                 </a>
             </div>
-            <button onclick="prevPage()" id="btn_prev" >Anterior</button>
+            <button type="button" class="" onclick="prevPage()" id="btn_prev" >Anterior</button>
         `;
     }
     
@@ -101,7 +101,7 @@ const X = response => {
                 </div>
             `
         }
-        listing_table.innerHTML +=  `<button onclick="nextPage()" id="btn_next" >Próximo</button>`
+        listing_table.innerHTML +=  `<button type="button" class="" onclick="nextPage()" id="btn_next" >Próximo</button>`
 
         const btn_next = document.getElementById("btn_next");
         const btn_prev = document.getElementById("btn_prev");
