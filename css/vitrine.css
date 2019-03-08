@@ -2,19 +2,17 @@
     color: black;
 }
 
+.produto .promocao {
+    /* display: inline-block; */
+    color: red;
+}
+
 .produto img{
     display: block;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
 }
-
-.produto .promocao {
-    display: inline-block;
-    color: red;
-}
-
-
 
 .produto a:link {
     text-decoration: none;
@@ -23,12 +21,25 @@
 
 .produto a:visited {
     text-decoration: none;
+    color: inherit;
 }
 
 .produto a:hover {
     text-decoration: underline;
+    color: inherit;
 }
 
 .produto a:active {
     text-decoration: underline;
+    color: inherit;
+}
+
+.produto p {
+    width: 100%;
+}
+
+.header {
+    background-color: aqua;
+    color: blue;
+    font-weight: bold;
 }

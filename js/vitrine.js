@@ -4,6 +4,8 @@ const X = response => {
     let widget = null;
     let reference = null;
     let recommendations = null;
+    let current_page = 1;
+    const records_per_page = 3;
 
     // ---------- Functions ------------
 
@@ -36,7 +38,7 @@ const X = response => {
     // Render product reference
     renderProduct = (ref) => {
         return `
-            <div class="col-2" >
+            <div class="col-md-2 col-sm-12" >
                 <a class="" href="${ref.item.detailUrl}" >
                     <img src="${ref.item.imageName}" class=""/>
                     <div class="row">
@@ -50,41 +52,79 @@ const X = response => {
                     </div>
                 </a>
             </div>
-        `;
-    }
-
-    // Render product recommendations
-    renderRecomendations = (rec) => {
-        return `
-        ${rec.map(recommendation => 
-            `<div class="col-2" >
-                <a class="" href="${recommendation.detailUrl}" >
-                    <img src="${recommendation.imageName}" class=""/>
-                    <div class="row">
-                        <p class="" >${recommendation.name}</p>
-                        ${recommendation.oldPrice ? `<p>De: ${recommendation.oldPrice}</p>` : ''}
-                        <div class="promocao" >
-                            <h5>Por: <strong>${recommendation.price}</strong></h5>
-                            <p>${recommendation.productInfo.paymentConditions}</p>
-                            <p>sem juros</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            `
-        ).join('')}
+            <button onclick="prevPage()" id="btn_prev" >Anterior</button>
         `;
     }
     
-
-    // Get the container element and update the innerHTML of him
-    updateTemplate = (productContainer, ref, rec) => {
-        let containerElement = document.getElementById(productContainer);
-        containerElement.innerHTML = renderProduct(ref) + renderRecomendations(rec);
+    numPages = () => {
+        return Math.ceil(widget.size / records_per_page);
     }
 
+    prevPage = () => {
+        if (current_page > 1) {
+            current_page--;
+            changePage(current_page);
+        }
+    }
+
+    nextPage = () => {
+        if (current_page < numPages()) {
+            current_page++;
+            changePage(current_page);
+        }
+    }
+        
+    changePage = (page) => {
+        var btn_next = document.getElementById("btn_next");
+        var btn_prev = document.getElementById("btn_prev");
+        var listing_table = document.getElementById("product-container");
+    
+        // Validate page
+        if (page < 1) page = 1;
+        if (page > numPages()) page = numPages();
+
+        listing_table.innerHTML = renderProduct(reference);
+
+        for (let i = (page-1) * records_per_page; i < (page * records_per_page) && i < recommendations.length; i++) {
+            listing_table.innerHTML +=  `
+                <div class="col-md-2 col-sm-12" >
+                    <a class="" href="${recommendations[i].detailUrl}" >
+                        <img src="${recommendations[i].imageName}" class=""/>
+                        <div class="row">
+                            <p class="" >${recommendations[i].name}</p>
+                            ${recommendations[i].oldPrice ? `<p>De: ${recommendations[i].oldPrice}</p>` : ''}
+                            <div class="promocao" >
+                                <h5>Por: <strong>${recommendations[i].price}</strong></h5>
+                                <p>${recommendations[i].productInfo.paymentConditions}</p>
+                                <p>sem juros</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            `
+        }
+        listing_table.innerHTML +=  `<button onclick="nextPage()" id="btn_next" >Próximo</button>`
+
+        if (page == 1) {
+            btn_prev.style.visibility = "hidden";
+        } else {
+            btn_prev.style.visibility = "visible";
+        }
+
+        if (page == numPages()) {
+            btn_next.style.visibility = "hidden";
+        } else {
+            btn_next.style.visibility = "visible";
+        }
+    }
+
+    window.onload = () => {
+        changePage(1);
+    };
+
+    // Main program
     this.getData();
-    this.updateTemplate("product-container", reference, recommendations);
+    this.renderProduct(reference);
 
     
 }
