@@ -43,3 +43,8 @@
     color: blue;
     font-weight: bold;
 }
+
+button{
+    height: 50px;
+    margin: auto;
+}

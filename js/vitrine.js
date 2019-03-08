@@ -75,8 +75,6 @@ const X = response => {
     }
         
     changePage = (page) => {
-        var btn_next = document.getElementById("btn_next");
-        var btn_prev = document.getElementById("btn_prev");
         var listing_table = document.getElementById("product-container");
     
         // Validate page
@@ -105,16 +103,19 @@ const X = response => {
         }
         listing_table.innerHTML +=  `<button onclick="nextPage()" id="btn_next" >Próximo</button>`
 
+        const btn_next = document.getElementById("btn_next");
+        const btn_prev = document.getElementById("btn_prev");
+
         if (page == 1) {
-            btn_prev.style.visibility = "hidden";
+            btn_prev.disabled = true;
         } else {
-            btn_prev.style.visibility = "visible";
+            btn_prev.disabled = false;
         }
 
         if (page == numPages()) {
-            btn_next.style.visibility = "hidden";
+            btn_next.disabled = true;
         } else {
-            btn_next.style.visibility = "visible";
+            btn_next.disabled = false;
         }
     }
 
