@@ -52,7 +52,7 @@ const X = response => {
                     </div>
                 </a>
             </div>
-            <button type="button" class="" onclick="prevPage()" id="btn_prev" >Anterior</button>
+            <button type="button" class="col-md-1" onclick="prevPage()" id="btn_prev" >Anterior</button>
         `;
     }
     
@@ -75,16 +75,16 @@ const X = response => {
     }
         
     changePage = (page) => {
-        var listing_table = document.getElementById("product-container");
+        var productElement = document.getElementById("product-container");
     
         // Validate page
         if (page < 1) page = 1;
         if (page > numPages()) page = numPages();
 
-        listing_table.innerHTML = renderProduct(reference);
+        productElement.innerHTML = renderProduct(reference);
 
         for (let i = (page-1) * records_per_page; i < (page * records_per_page) && i < recommendations.length; i++) {
-            listing_table.innerHTML +=  `
+            productElement.innerHTML +=  `
                 <div class="col-md-2 col-sm-12" >
                     <a class="" href="${recommendations[i].detailUrl}" >
                         <img src="${recommendations[i].imageName}" class=""/>
@@ -101,7 +101,8 @@ const X = response => {
                 </div>
             `
         }
-        listing_table.innerHTML +=  `<button type="button" class="" onclick="nextPage()" id="btn_next" >Próximo</button>`
+        // Add button after last recommended product
+        productElement.innerHTML +=  `<button type="button" class="col-md-1" onclick="nextPage()" id="btn_next" >Próximo</button>`
 
         const btn_next = document.getElementById("btn_next");
         const btn_prev = document.getElementById("btn_prev");
