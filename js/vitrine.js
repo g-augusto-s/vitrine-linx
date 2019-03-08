@@ -56,10 +56,12 @@ const X = response => {
         `;
     }
     
+    // Return num of pages
     numPages = () => {
         return Math.ceil(widget.size / records_per_page);
     }
 
+    // Previous page function
     prevPage = () => {
         if (current_page > 1) {
             current_page--;
@@ -67,6 +69,7 @@ const X = response => {
         }
     }
 
+    // Next page function
     nextPage = () => {
         if (current_page < numPages()) {
             current_page++;
@@ -74,6 +77,7 @@ const X = response => {
         }
     }
         
+    // Render recommended products based on page
     changePage = (page) => {
         var productElement = document.getElementById("product-container");
     
@@ -107,6 +111,7 @@ const X = response => {
         const btn_next = document.getElementById("btn_next");
         const btn_prev = document.getElementById("btn_prev");
 
+        // Disable buttons when necessary
         if (page == 1) {
             btn_prev.disabled = true;
         } else {
@@ -120,6 +125,7 @@ const X = response => {
         }
     }
 
+    // Change to page one when document load
     window.onload = () => {
         changePage(1);
     };
@@ -127,6 +133,5 @@ const X = response => {
     // Main program
     this.getData();
     this.renderProduct(reference);
-
     
 }
