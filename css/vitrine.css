@@ -1,3 +1,27 @@
+button {
+    height: 50px;
+    margin: auto;
+    border: 1px solid #2064a5;
+    background-color: #2064a5;
+    border-radius: 3px;
+    color: #ffffff;
+    padding: 5px 10px;
+}
+  
+button:hover {
+    border: 1px solid #0099cc;
+    background-color: #00aacc;
+    color: #ffffff;
+    padding: 5px 10px;
+}
+
+button:disabled,
+button[disabled]{
+    border: 1px solid #b5b5b5;
+    background-color: #b5b5b5;
+    color: #666666;
+}
+
 .produto {
     color: black;
     padding: 15px;
@@ -38,34 +62,16 @@
 
 .produto p {
     width: 100%;
+    margin: 0px 10px;
+}
+
+.produto h5{
+    margin: 0px 10px;
 }
 
 .header {
-    background-color: aqua;
-    color: blue;
+    background-color: #e5f1fb;
+    border-color: #e5f1fb;
+    color: #006699;
     font-weight: bold;
 }
-
-button {
-    height: 50px;
-    margin: auto;
-    border: 1px solid #0066cc;
-    background-color: #0099cc;
-    border-radius: 3px;
-    color: #ffffff;
-    padding: 5px 10px;
-  }
-  
-  button:hover {
-    border: 1px solid #0099cc;
-    background-color: #00aacc;
-    color: #ffffff;
-    padding: 5px 10px;
-  }
-  
-  button:disabled,
-  button[disabled]{
-    border: 1px solid #999999;
-    background-color: #cccccc;
-    color: #666666;
-  }

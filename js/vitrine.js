@@ -45,7 +45,7 @@ const X = response => {
                         <p class="" >${ref.item.name}</p>
                         ${ref.item.oldPrice ? `<p>De: ${ref.item.oldPrice}</p>` : ''}
                         <div class="promocao" >
-                            <h5>Por: <strong>${ref.item.price}</strong></h5>
+                            <p>Por: <strong>${ref.item.price}</strong></p>
                             <p>${ref.item.productInfo.paymentConditions}</p>
                             <p>sem juros</p>
                         </div>
@@ -92,7 +92,7 @@ const X = response => {
                             <p class="" >${recommendations[i].name}</p>
                             ${recommendations[i].oldPrice ? `<p>De: ${recommendations[i].oldPrice}</p>` : ''}
                             <div class="promocao" >
-                                <h5>Por: <strong>${recommendations[i].price}</strong></h5>
+                                <p>Por: <strong>${recommendations[i].price}</strong></p>
                                 <p>${recommendations[i].productInfo.paymentConditions}</p>
                                 <p>sem juros</p>
                             </div>
